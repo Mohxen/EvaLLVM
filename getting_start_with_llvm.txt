@@ -1,0 +1,333 @@
+vboxuser@newos:~$ clang --version
+Command 'clang' not found, but can be installed with:
+apt install clang
+Please ask your administrator.
+vboxuser@newos:~$ clang++ --version
+Command 'clang++' not found, but can be installed with:
+apt install clang
+Please ask your administrator.
+vboxuser@newos:~$ sudo apt-get install clang
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  libboost-all-dev libboost-atomic-dev libboost-chrono-dev
+  libboost-container-dev libboost-context-dev libboost-coroutine-dev
+  libboost-date-time-dev libboost-exception-dev libboost-fiber-dev
+  libboost-graph-parallel-dev libboost-locale-dev libboost-log-dev
+  libboost-math-dev libboost-mpi-dev libboost-mpi-python-dev
+  libboost-nowide-dev libboost-numpy-dev libboost-python-dev
+  libboost-random-dev libboost-regex-dev libboost-serialization-dev
+  libboost-stacktrace-dev libboost-test-dev libboost-timer-dev
+  libboost-tools-dev libboost-type-erasure-dev libboost-wave-dev libbpf-dev
+  libelf-dev pypy pypy-ipaddress pypy-lib python-pkg-resources
+  python-setuptools python3-psutil python3-pyroute2 python3-pyroute2.core
+  python3-pyroute2.ethtool python3-pyroute2.ipdb python3-pyroute2.ipset
+  python3-pyroute2.ndb python3-pyroute2.nftables python3-pyroute2.nslink
+  python3-pyroute2.protocols
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  clang
+0 upgraded, 1 newly installed, 0 to remove and 5 not upgraded.
+Need to get 3,558 B of archives.
+After this operation, 25.6 kB of additional disk space will be used.
+Get:1 http://ca.archive.ubuntu.com/ubuntu jammy/universe amd64 clang amd64 1:14.0-55~exp2 [3,558 B]
+Fetched 3,558 B in 0s (38.7 kB/s)
+Selecting previously unselected package clang.
+(Reading database ... 521181 files and directories currently installed.)
+Preparing to unpack .../clang_1%3a14.0-55~exp2_amd64.deb ...
+Unpacking clang (1:14.0-55~exp2) ...
+Setting up clang (1:14.0-55~exp2) ...
+Processing triggers for man-db (2.10.2-1) ...
+
+
+vboxuser@newos:~$ clang++ --version
+Ubuntu clang version 14.0.0-1ubuntu1.1
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+
+
+vboxuser@newos:~$ llvm --version
+Command 'llvm' not found, did you mean:
+  command 'rlvm' from deb rlvm (0.14-5.1build1)
+  command 'lkvm' from deb kvmtool (0.20170904-1.1)
+  command 'lvm' from deb lvm2 (2.03.11-2.1ubuntu4)
+Try: apt install <deb name>
+
+
+vboxuser@newos:~$ sudo apt-get install llvm
+llvm                  llvm-13               llvm-15-dev
+llvm-11               llvm-13-dev           llvm-15-doc
+llvm-11-dev           llvm-13-doc           llvm-15-examples
+llvm-11-doc           llvm-13-examples      llvm-15-linker-tools
+llvm-11-examples      llvm-13-linker-tools  llvm-15-runtime
+llvm-11-linker-tools  llvm-13-runtime       llvm-15-tools
+llvm-11-runtime       llvm-13-tools         llvm-dev
+llvm-11-tools         llvm-14               llvmlite-doc
+llvm-12               llvm-14-dev           llvm-runtime
+llvm-12-dev           llvm-14-doc           llvm-spirv
+llvm-12-doc           llvm-14-examples      llvm-spirv-12
+llvm-12-examples      llvm-14-linker-tools  llvm-spirv-14
+llvm-12-linker-tools  llvm-14-runtime       llvm-spirv-15
+llvm-12-runtime       llvm-14-tools         
+llvm-12-tools         llvm-15         
+
+      
+vboxuser@newos:~$ sudo apt-get install llvm
+llvm                  llvm-13               llvm-15-dev
+llvm-11               llvm-13-dev           llvm-15-doc
+llvm-11-dev           llvm-13-doc           llvm-15-examples
+llvm-11-doc           llvm-13-examples      llvm-15-linker-tools
+llvm-11-examples      llvm-13-linker-tools  llvm-15-runtime
+llvm-11-linker-tools  llvm-13-runtime       llvm-15-tools
+llvm-11-runtime       llvm-13-tools         llvm-dev
+llvm-11-tools         llvm-14               llvmlite-doc
+llvm-12               llvm-14-dev           llvm-runtime
+llvm-12-dev           llvm-14-doc           llvm-spirv
+llvm-12-doc           llvm-14-examples      llvm-spirv-12
+llvm-12-examples      llvm-14-linker-tools  llvm-spirv-14
+llvm-12-linker-tools  llvm-14-runtime       llvm-spirv-15
+llvm-12-runtime       llvm-14-tools         
+llvm-12-tools         llvm-15    
+
+           
+vboxuser@newos:~$ sudo apt-get install llvm-14
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+llvm-14 is already the newest version (1:14.0.0-1ubuntu1.1).
+llvm-14 set to manually installed.
+The following packages were automatically installed and are no longer required:
+  libboost-all-dev libboost-atomic-dev libboost-chrono-dev
+  libboost-container-dev libboost-context-dev libboost-coroutine-dev
+  libboost-date-time-dev libboost-exception-dev libboost-fiber-dev
+  libboost-graph-parallel-dev libboost-locale-dev libboost-log-dev
+  libboost-math-dev libboost-mpi-dev libboost-mpi-python-dev
+  libboost-nowide-dev libboost-numpy-dev libboost-python-dev
+  libboost-random-dev libboost-regex-dev libboost-serialization-dev
+  libboost-stacktrace-dev libboost-test-dev libboost-timer-dev
+  libboost-tools-dev libboost-type-erasure-dev libboost-wave-dev libbpf-dev
+  libelf-dev pypy pypy-ipaddress pypy-lib python-pkg-resources
+  python-setuptools python3-psutil python3-pyroute2 python3-pyroute2.core
+  python3-pyroute2.ethtool python3-pyroute2.ipdb python3-pyroute2.ipset
+  python3-pyroute2.ndb python3-pyroute2.nftables python3-pyroute2.nslink
+  python3-pyroute2.protocols
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 5 not upgraded.
+
+
+vboxuser@newos:~$ llvm --version
+Command 'llvm' not found, did you mean:
+  command 'rlvm' from deb rlvm (0.14-5.1build1)
+  command 'lvm' from deb lvm2 (2.03.11-2.1ubuntu4)
+  command 'lkvm' from deb kvmtool (0.20170904-1.1)
+Try: apt install <deb name>
+
+
+vboxuser@newos:~$ llvm-14 --version
+llvm-14: command not found
+
+
+vboxuser@newos:~$ llvm-14 --version
+llvm-14: command not found
+
+
+vboxuser@newos:~$ llvm --version
+Command 'llvm' not found, did you mean:
+  command 'lvm' from deb lvm2 (2.03.11-2.1ubuntu4)
+  command 'rlvm' from deb rlvm (0.14-5.1build1)
+  command 'lkvm' from deb kvmtool (0.20170904-1.1)
+Try: apt install <deb name>
+
+
+vboxuser@newos:~$ llvm-config --prefix --version
+/usr/lib/llvm-14
+14.0.0
+
+
+vboxuser@newos:~$ llvm-config --version
+14.0.0
+
+
+vboxuser@newos:~$ llc --version
+Ubuntu LLVM version 14.0.0
+  
+  Optimized build.
+  Default target: x86_64-pc-linux-gnu
+  Host CPU: tigerlake
+
+  Registered Targets:
+    aarch64    - AArch64 (little endian)
+    aarch64_32 - AArch64 (little endian ILP32)
+    aarch64_be - AArch64 (big endian)
+    amdgcn     - AMD GCN GPUs
+    arm        - ARM
+    arm64      - ARM64 (little endian)
+    arm64_32   - ARM64 (little endian ILP32)
+    armeb      - ARM (big endian)
+    avr        - Atmel AVR Microcontroller
+    bpf        - BPF (host endian)
+    bpfeb      - BPF (big endian)
+    bpfel      - BPF (little endian)
+    hexagon    - Hexagon
+    lanai      - Lanai
+    m68k       - Motorola 68000 family
+    mips       - MIPS (32-bit big endian)
+    mips64     - MIPS (64-bit big endian)
+    mips64el   - MIPS (64-bit little endian)
+    mipsel     - MIPS (32-bit little endian)
+    msp430     - MSP430 [experimental]
+    nvptx      - NVIDIA PTX 32-bit
+    nvptx64    - NVIDIA PTX 64-bit
+    ppc32      - PowerPC 32
+    ppc32le    - PowerPC 32 LE
+    ppc64      - PowerPC 64
+    ppc64le    - PowerPC 64 LE
+    r600       - AMD GPUs HD2XXX-HD6XXX
+    riscv32    - 32-bit RISC-V
+    riscv64    - 64-bit RISC-V
+    sparc      - Sparc
+    sparcel    - Sparc LE
+    sparcv9    - Sparc V9
+    systemz    - SystemZ
+    thumb      - Thumb
+    thumbeb    - Thumb (big endian)
+    ve         - VE
+    wasm32     - WebAssembly 32-bit
+    wasm64     - WebAssembly 64-bit
+    x86        - 32-bit X86: Pentium-Pro and above
+    x86-64     - 64-bit X86: EM64T and AMD64
+    xcore      - XCore
+    
+    
+vboxuser@newos:~$ cd Desktop/llvm/
+
+
+vboxuser@newos:~/Desktop/llvm$ touch test_cplusplus.cpp
+
+
+vboxuser@newos:~/Desktop/llvm$ clang -S emit-llvm test_cplusplus.cpp 
+clang: error: no such file or directory: 'emit-llvm'; did you mean '-emit-llvm'?
+
+
+vboxuser@newos:~/Desktop/llvm$ clang -S -emit-llvm test_cplusplus.cpp 
+
+
+vboxuser@newos:~/Desktop/llvm$ ls -a
+.  ..  test_cplusplus.cpp  test_cplusplus.ll
+
+
+vboxuser@newos:~/Desktop/llvm$ ls -la
+total 16
+drwxrwxr-x 2 vboxuser vboxuser 4096 Jan 20 13:58 .
+drwxr-xr-x 7 vboxuser vboxuser 4096 Jan 20 13:48 ..
+-rw-rw-r-- 1 vboxuser vboxuser   29 Jan 20 13:58 test_cplusplus.cpp
+-rw-rw-r-- 1 vboxuser vboxuser  973 Jan 20 13:58 test_cplusplus.ll
+
+
+vboxuser@newos:~/Desktop/llvm$ vi test_cplusplus.ll 
+
+
+vboxuser@newos:~/Desktop/llvm$ clang -O test_cplusplus test_cplusplus.ll 
+clang: error: no such file or directory: 'test_cplusplus'
+
+
+vboxuser@newos:~/Desktop/llvm$ clang++ -O test_cplusplus test_cplusplus.ll 
+clang: error: no such file or directory: 'test_cplusplus'
+
+
+vboxuser@newos:~/Desktop/llvm$ clang++ -o test_cplusplus test_cplusplus.ll 
+
+
+vboxuser@newos:~/Desktop/llvm$ ls -la
+total 32
+drwxrwxr-x 2 vboxuser vboxuser  4096 Jan 20 14:12 .
+drwxr-xr-x 7 vboxuser vboxuser  4096 Jan 20 13:48 ..
+-rwxrwxr-x 1 vboxuser vboxuser 15920 Jan 20 14:12 test_cplusplus
+-rw-rw-r-- 1 vboxuser vboxuser    29 Jan 20 13:58 test_cplusplus.cpp
+-rw-rw-r-- 1 vboxuser vboxuser   973 Jan 20 13:58 test_cplusplus.ll
+
+
+vboxuser@newos:~/Desktop/llvm$ ./test_cplusplus 
+
+
+vboxuser@newos:~/Desktop/llvm$ echo $?
+42
+
+
+vboxuser@newos:~/Desktop/llvm$ lli --version
+Ubuntu LLVM version 14.0.0
+  
+  Optimized build.
+  Default target: x86_64-pc-linux-gnu
+  Host CPU: tigerlake
+  
+  
+vboxuser@newos:~/Desktop/llvm$ lli test_cplusplus.ll 
+
+
+vboxuser@newos:~/Desktop/llvm$ echo $?
+42
+
+
+vboxuser@newos:~/Desktop/llvm$ ls -la
+total 32
+drwxrwxr-x 2 vboxuser vboxuser  4096 Jan 20 14:12 .
+drwxr-xr-x 7 vboxuser vboxuser  4096 Jan 20 13:48 ..
+-rwxrwxr-x 1 vboxuser vboxuser 15920 Jan 20 14:12 test_cplusplus
+-rw-rw-r-- 1 vboxuser vboxuser    29 Jan 20 13:58 test_cplusplus.cpp
+-rw-rw-r-- 1 vboxuser vboxuser   973 Jan 20 13:58 test_cplusplus.ll
+
+
+vboxuser@newos:~/Desktop/llvm$ llvm-as test_cplusplus.ll 
+
+
+vboxuser@newos:~/Desktop/llvm$ ls -la
+total 36
+drwxrwxr-x 2 vboxuser vboxuser  4096 Jan 20 14:22 .
+drwxr-xr-x 7 vboxuser vboxuser  4096 Jan 20 13:48 ..
+-rwxrwxr-x 1 vboxuser vboxuser 15920 Jan 20 14:12 test_cplusplus
+-rw-rw-r-- 1 vboxuser vboxuser  1996 Jan 20 14:22 test_cplusplus.bc
+-rw-rw-r-- 1 vboxuser vboxuser    29 Jan 20 13:58 test_cplusplus.cpp
+-rw-rw-r-- 1 vboxuser vboxuser   973 Jan 20 13:58 test_cplusplus.ll
+
+
+vboxuser@newos:~/Desktop/llvm$ llvm-dis test_cplusplus.bc 
+
+
+vboxuser@newos:~/Desktop/llvm$ ls -a
+.  ..  test_cplusplus  test_cplusplus.bc  test_cplusplus.cpp  test_cplusplus.ll
+
+
+vboxuser@newos:~/Desktop/llvm$ llvm-dis test_cplusplus.bc -o test_cplusplus_second.ll
+
+
+vboxuser@newos:~/Desktop/llvm$ ls -la
+total 40
+drwxrwxr-x 2 vboxuser vboxuser  4096 Jan 20 14:23 .
+drwxr-xr-x 7 vboxuser vboxuser  4096 Jan 20 13:48 ..
+-rwxrwxr-x 1 vboxuser vboxuser 15920 Jan 20 14:12 test_cplusplus
+-rw-rw-r-- 1 vboxuser vboxuser  1996 Jan 20 14:22 test_cplusplus.bc
+-rw-rw-r-- 1 vboxuser vboxuser    29 Jan 20 13:58 test_cplusplus.cpp
+-rw-rw-r-- 1 vboxuser vboxuser   972 Jan 20 14:22 test_cplusplus.ll
+-rw-rw-r-- 1 vboxuser vboxuser   972 Jan 20 14:23 test_cplusplus_second.ll
+
+
+vboxuser@newos:~/Desktop/llvm$ clang++ -S test_cplusplus.ll
+
+
+vboxuser@newos:~/Desktop/llvm$ ls -la
+total 44
+drwxrwxr-x 2 vboxuser vboxuser  4096 Jan 20 14:23 .
+drwxr-xr-x 7 vboxuser vboxuser  4096 Jan 20 13:48 ..
+-rwxrwxr-x 1 vboxuser vboxuser 15920 Jan 20 14:12 test_cplusplus
+-rw-rw-r-- 1 vboxuser vboxuser  1996 Jan 20 14:22 test_cplusplus.bc
+-rw-rw-r-- 1 vboxuser vboxuser    29 Jan 20 13:58 test_cplusplus.cpp
+-rw-rw-r-- 1 vboxuser vboxuser   972 Jan 20 14:22 test_cplusplus.ll
+-rw-rw-r-- 1 vboxuser vboxuser   606 Jan 20 14:23 test_cplusplus.s
+-rw-rw-r-- 1 vboxuser vboxuser   972 Jan 20 14:23 test_cplusplus_second.ll
+
+
+vboxuser@newos:~/Desktop/llvm$ vi test_cplusplus.s 
+
