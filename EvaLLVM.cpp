@@ -2,7 +2,7 @@
  * Eva LLVM executable.
  */
 #include <string>
-#include "./EvaLLVM.h" // Assuming EvaLLVM.h is in the same directory or include path
+#include "./src/EvaLLVM.h" // Assuming EvaLLVM.h is in the same directory or include path
 
 int main(int argc, char const *argv[]) {
     /**
@@ -16,6 +16,11 @@ int main(int argc, char const *argv[]) {
     //(printf "True: %d\n\n" true) 
     //(printf "Version: %d\n\n" version)
     //(var VERSION 42)
+            // (var VERSION 42)
+
+        // (begin 
+        //     (var VERSION "Hello")
+        //     (printf "Version: %s\n\n" VERSION))
     std::string program = R"( 
 
         (printf "Version: %d\n\n" VERSION)

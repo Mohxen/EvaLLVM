@@ -10,20 +10,28 @@
 #include "llvm/IR/Module.h"
 #include "llvm/IR/Verifier.h"
 
-#include "src/parser/EvaParser.h"
+#include "./Environment.h"
+#include "parser/EvaParser.h"
 
 using syntax::EvaParser;
+
+/**
+ * Environment type.
+ */
+using Env = std::shared_ptr<Environment>;
+
 class EvaLLVM {
 public:
     EvaLLVM() : parser(std::make_unique<EvaParser>()){
         moduleInit();
         setupExternalFunctions();
+        setupGlobalEnvironment();
     }
 
     // Executes a program.
     void exec(const std::string& program) {
         // 1. Parse the program
-        auto ast = parser->parse(program);
+        auto ast = parser->parse("(begin " + program + ")");
 
         // 2. Compile to LLVM IR
         //compile(ast);
@@ -42,13 +50,12 @@ private:
 
     void compile(const Exp& ast){
         // 1. create main function
-        fn = createFunction("main", llvm::FunctionType::get(/* return type */ builder->getInt32Ty(),
-                                                            /* vararg */ false));
+        fn = createFunction("main", llvm::FunctionType::get(/* return type */ builder->getInt32Ty(),/* vararg */ false), GlobalEnv);
         
         createGlobalVar("VERSION", builder->getInt32(42));
 
         // 2. compile main body
-        auto result = gen(ast);
+        auto result = gen(ast, GlobalEnv);
 
         // 3. cast to i32 to return from main
         // auto i32Result =
@@ -61,7 +68,7 @@ private:
     }
     /* main compile loop */
 
-    llvm::Value* gen(const Exp& exp){ 
+    llvm::Value* gen(const Exp& exp, Env env){ 
         switch (exp.type) {
             /*
             * Number
@@ -91,11 +98,15 @@ private:
                     return builder->getInt1(exp.string == "true" ? true : false);
                 } else {
                     // Variable
-
+                    auto varName = exp.string; 
+                    auto value = env->lookup(varName);
                     // 1. Local Vars: (TODO)
 
                     // 2. Global vars:
-                    return module->getNamedGlobal(exp.string)->getInitializer();
+                    if(auto globalVar = llvm::dyn_cast<llvm::GlobalVariable>(value)) {
+                        return builder->CreateLoad(globalVar->getInitializer()->getType(), 
+                                                    globalVar, varName.c_str());
+                    }
                 }
             /*
             * Lists
@@ -118,10 +129,23 @@ private:
                     auto varName = exp.list[1].string;
 
                     // Initializer:
-                    auto init = gen(exp.list[2]);
+                    auto init = gen(exp.list[2], env);
 
                     return createGlobalVar(varName, (llvm::Constant*) init);
                 }
+                // ------------------------------------------
+                // Blocks: (begin <expressions>)
+                else if (op == "begin"){
+                    // Compile each expression within the block.
+                    // Result is the last evaluated expression.
+                    llvm::Value* blockRes;
+                    for (auto i = 1; i < exp.list.size(); i++){
+                        // Generate expression code.
+                        blockRes = gen(exp.list[i], env); // TODO: local block env!
+                    }
+                    return blockRes;    
+                }
+
 
                 // ------------------------------------------
                 // printf extern function:
@@ -134,7 +158,7 @@ private:
                     std::vector<llvm::Value*> args{};
                     for (auto i = 1; i < exp.list.size(); i++)
                     {
-                        args.push_back(gen(exp.list[i]));
+                        args.push_back(gen(exp.list[i], env));
                     }
                     
                     return builder->CreateCall(printfFn, args);
@@ -188,25 +212,28 @@ private:
     }
 
     // create function
-    llvm::Function* createFunction(const std::string& fnName, llvm::FunctionType* fnType){
+    llvm::Function* createFunction(const std::string& fnName, llvm::FunctionType* fnType, Env env){
 
         // function prototype might already be defined
         auto fn = module->getFunction(fnName);
         
         // if not, allocate the function
         if (fn == nullptr){
-            fn = createFunctionProto(fnName, fnType);
+            fn = createFunctionProto(fnName, fnType, env);
         }
 
         createFunctionBlock(fn);
         return fn;
     }
 
-    llvm::Function* createFunctionProto(const std::string& fnName, llvm::FunctionType* fnType){
+    llvm::Function* createFunctionProto(const std::string& fnName, llvm::FunctionType* fnType, Env env){
 
         auto fn = llvm::Function::Create(fnType, llvm::Function::ExternalLinkage, fnName, *module);
 
         verifyFunction(*fn);
+
+        // Install in the enviornment:
+        env->define(fnName, fn);
 
         return fn;
     }
@@ -235,11 +262,37 @@ private:
     }
 
     /**
+     * Setup Global Environment.
+     */
+    void setupGlobalEnvironment(){
+        std::map<std::string, llvm::Value*> globalObject {
+            {"VERSION", builder->getInt32(42)}, 
+        };
+        std::map<std::string, llvm::Value*> globalRec{};
+        
+        for (auto& entry : globalObject){
+            globalRec[entry.first] = 
+                createGlobalVar(entry.first, (llvm::Constant*)entry.second);
+        }
+
+        GlobalEnv = std::make_shared<Environment>(globalRec, nullptr);
+    }
+
+    /**
      * Parser.
     */
     std::unique_ptr<EvaParser> parser;
 
+    /**
+     * Global Environment (symbol table).
+     */
+    std::shared_ptr<Environment> GlobalEnv;
+
+    /**
+     * currently compiling function.
+     */
     llvm::Function* fn;
+
     // Global LLVM context.
     // It owns and manages the core "global" data of LLVM's core infrastructure,
     // including the type and constant unique tables.
